@@ -9,16 +9,16 @@ using System.Web.Http;
 namespace ProductListApp.Controllers
 {
     public class ProductsController : ApiController {
-       readonly Product[] products = new Product[] {
+        Product[] products = new Product[] {
             new Product { Id = 1, Name = "Bobi", Category = "Programmer", Price = 85.4M},
             new Product { Id = 2, Name = "Tivkiot Don", Category = "Books", Price = 15.5M},
             new Product { Id = 1, Name = "Canyon", Category = "Bicycle", Price = 2424.8M}
         };
-        IEnumerable<Product> GetProducts() {
+        public IEnumerable<Product> GetProducts() {
             return products;
         }
 
-        IHttpActionResult GetProduct(int id) {
+        public IHttpActionResult GetProduct(int id) {
             var product = products.FirstOrDefault(p => p.Id == id);
             if(product == null) {
                 return NotFound();
